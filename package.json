@@ -6,7 +6,7 @@
   "author": "Sieun Park <87406514+sieunp06@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js --open --hot",
+    "dev": "webpack-dev-server --config webpack.dev.js --open --hot"
   },
   "dependencies": {
     "react": "^18.2.0",
