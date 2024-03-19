@@ -2,3 +2,4 @@
 ./node_modules/**
 **/.{git,svn,hg}/**
 ./.{git,svn,hg}/**
+yarn.lock
