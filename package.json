@@ -6,7 +6,7 @@
     "author": "Sieun Park <87406514+sieunp06@users.noreply.github.com>",
     "license": "MIT",
     "scripts": {
-        "build": "react-scripts build",
+        "build": "webpack --config webpack.prod.js",
         "dev": "webpack-dev-server --config webpack.dev.js --open --hot",
         "test": "jest",
         "prettier": "prettier */** --check",
