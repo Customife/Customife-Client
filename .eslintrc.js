@@ -4,11 +4,7 @@ module.exports = {
         es6: true,
         node: true,
     },
-    extends: [
-        'plugin:react/recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:prettier/recommended',
-    ],
+    extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:prettier/recommended', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
