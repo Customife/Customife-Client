@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Logo } from '../../components';
+import { Title } from '../../components';
 
 export const IntroPage = () => {
     const navigate = useNavigate();
@@ -12,5 +12,5 @@ export const IntroPage = () => {
         };
     });
 
-    return <Logo name="Customife"></Logo>;
+    return <Title name="Customife"></Title>;
 };

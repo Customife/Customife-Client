@@ -1,2 +1,2 @@
-export * from './Text/LogoStyle';
+export * from './Text/TitleStyle';
 export * from './GlobalStyle';

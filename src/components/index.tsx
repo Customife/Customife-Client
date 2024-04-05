@@ -1,1 +1,1 @@
-export * from './Text/Logo';
+export * from './Text/Title';
