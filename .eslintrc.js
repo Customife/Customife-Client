@@ -35,6 +35,7 @@ module.exports = {
             },
         ],
         'prettier/prettier': ['error', { endOfLine: 'auto' }],
+        'react/no-unknown-property': ['error', { ignore: ['css'] }],
     },
     settings: {
         react: {
