@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 
-export const TitleStyle = css`
+export const PageStyle = css`
     margin: auto;
-    font-weight: 700;
 `;
