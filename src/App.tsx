@@ -1,5 +1,6 @@
-import { Global } from '@emotion/react';
+import { Global, ThemeProvider } from '@emotion/react';
 import React from 'react';
+import theme from 'styles/theme';
 
 import { Router } from './routers/Router';
 import { GlobalStyle } from './styles';
@@ -7,8 +8,10 @@ import { GlobalStyle } from './styles';
 const App = () => {
     return (
         <div className="container">
-            <Global styles={GlobalStyle} />
-            <Router />
+            <ThemeProvider theme={theme}>
+                <Global styles={GlobalStyle} />
+                <Router />
+            </ThemeProvider>
         </div>
     );
 };
