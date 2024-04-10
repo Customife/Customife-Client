@@ -1,27 +1,38 @@
+import { css } from '@emotion/react';
 import React from 'react';
 
+import { InputStyle } from '../../styles/';
+
 interface InputProps {
-    type: String;
+    type: string;
 }
 
 export const Input = ({ type }: InputProps) => {
+    const inputType = { placeholder: '이메일' };
+
     if (type === 'password') {
-        return (
-            <div>
-                <input type="password" name="password" placeholder="비밀번호"></input>
-            </div>
-        );
+        inputType.placeholder = '비밀번호';
     }
     if (type === 'submit') {
+        inputType.placeholder = '로그인';
         return (
             <div>
-                <input type="submit" value="로그인"></input>
+                <input css={[InputStyle, SubmitColor]} type={type} value={inputType.placeholder} />
             </div>
         );
     }
+
     return (
         <div>
-            <input type="text" name="username" placeholder="이메일"></input>
+            <input css={[InputStyle, InputColor]} type={type} name={type} placeholder={inputType.placeholder} />
         </div>
     );
 };
+
+const SubmitColor = css`
+    background-color: rgb(118, 171, 174);
+`;
+
+const InputColor = css`
+    background-color: rgb(238, 238, 238);
+`;

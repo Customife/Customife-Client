@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { LoginForm, Title } from '../../components';
@@ -7,7 +8,13 @@ export const LoginPage = () => {
     return (
         <div css={PageStyle}>
             <Title name="Login" />
-            <LoginForm />
+            <StyledDiv>
+                <LoginForm />
+            </StyledDiv>
         </div>
     );
 };
+
+const StyledDiv = styled.div`
+    margin-top: 1rem;
+`;
