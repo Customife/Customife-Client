@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { LoginForm, Title } from '../../components';
+import { LoginForm, Title, BasicDivider } from '../../components';
 import { PageStyle } from '../../styles';
 
 export const LoginPage = () => {
@@ -10,6 +10,9 @@ export const LoginPage = () => {
             <Title name="Login" />
             <StyledDiv>
                 <LoginForm />
+            </StyledDiv>
+            <StyledDiv>
+                <BasicDivider title={'또는'} />
             </StyledDiv>
         </div>
     );
