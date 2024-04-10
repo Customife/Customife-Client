@@ -1,18 +1,23 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { LoginForm, Title, BasicDivider } from '../../components';
-import { PageStyle } from '../../styles';
+import { LoginForm, Title, BasicDivider, Social } from '../../components';
+import { CenterComponent, PageStyle } from '../../styles';
 
 export const LoginPage = () => {
     return (
         <div css={PageStyle}>
             <Title name="Login" />
-            <StyledDiv>
+            <StyledDiv css={CenterComponent}>
                 <LoginForm />
             </StyledDiv>
             <StyledDiv>
                 <BasicDivider title={'또는'} />
+            </StyledDiv>
+            <StyledDiv css={CenterComponent}>
+                <Social type="Kakao" />
+                <Social type="Naver" />
+                <Social type="Google" />
             </StyledDiv>
         </div>
     );

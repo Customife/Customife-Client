@@ -1,4 +1,5 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -20,6 +21,19 @@ module.exports = {
                 use: {
                     loader: 'ts-loader',
                 },
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|webp)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            limit: 10000,
+                            fallback: 'file-loader',
+                        },
+                    },
+                ],
             },
         ],
     },

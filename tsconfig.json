@@ -20,7 +20,8 @@
             "@components/*": ["components/*"]
         },
         "outDir": "./dist",
-        "jsxImportSource": "@emotion/react"
+        "jsxImportSource": "@emotion/react",
+        "typeRoots": ["src/types"]
     },
     "include": ["src"],
     "exclude": ["node_modules"]
