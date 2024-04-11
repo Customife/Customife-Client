@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Title } from '../../components';
+import { BasicTitle } from '../../components';
 import { PageStyle } from '../../styles';
 
 export const IntroPage = () => {
@@ -16,7 +16,7 @@ export const IntroPage = () => {
 
     return (
         <div css={PageStyle}>
-            <Title name="Customife"></Title>
+            <BasicTitle size="1" title="Customife" />
         </div>
     );
 };

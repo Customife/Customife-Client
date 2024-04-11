@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { LoginForm, Title, BasicText, Social, TextButton, TextDivider } from '../../components';
+import { LoginForm, BasicTitle, BasicText, Social, TextButton, TextDivider } from '../../components';
 import { CenterComponent, PageStyle } from '../../styles';
 
 export const LoginPage = () => {
     return (
         <div css={PageStyle}>
-            <Title name="Login" />
+            <BasicTitle size="2" title="Login" />
             <div css={[CenterComponent, StyledDiv]}>
                 <LoginForm />
             </div>
