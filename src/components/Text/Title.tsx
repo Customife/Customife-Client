@@ -8,9 +8,5 @@ interface TitleProps {
 }
 
 export const Title = ({ name }: TitleProps) => {
-    return (
-        <h2 id="logo" css={[CenterComponent, TitleStyle]}>
-            {name}
-        </h2>
-    );
+    return <h2 css={[CenterComponent, TitleStyle]}>{name}</h2>;
 };
