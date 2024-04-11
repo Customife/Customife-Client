@@ -1,2 +1,1 @@
-export * from './Input';
-export * from './LoginForm';
+export * from '../Molecules/Form/LoginForm';

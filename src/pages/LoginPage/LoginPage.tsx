@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { LoginForm, Title, BasicText, BasicDivider, Social, TextButton, TextDivider } from '../../components';
+import { LoginForm, Title, BasicText, Social, TextButton, TextDivider } from '../../components';
 import { CenterComponent, PageStyle } from '../../styles';
 
 export const LoginPage = () => {
