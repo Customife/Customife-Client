@@ -1,38 +1,41 @@
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import React from 'react';
 
-import { LoginForm, Title, BasicText, BasicDivider, Social, TextButton } from '../../components';
+import { LoginForm, Title, BasicText, BasicDivider, Social, TextButton, TextDivider } from '../../components';
 import { CenterComponent, PageStyle } from '../../styles';
 
 export const LoginPage = () => {
     return (
         <div css={PageStyle}>
             <Title name="Login" />
-            <StyledDiv css={CenterComponent}>
+            <div css={[CenterComponent, StyledDiv]}>
                 <LoginForm />
-            </StyledDiv>
-            <StyledDiv>
-                <BasicDivider title={'또는'} />
-            </StyledDiv>
-            <StyledDiv css={CenterComponent}>
+            </div>
+            <div css={StyledDiv}>
+                <TextDivider text={'또는'} />
+            </div>
+            <div css={[CenterComponent, StyledDiv]}>
                 <Social type="Kakao" />
                 <Social type="Naver" />
                 <Social type="Google" />
-            </StyledDiv>
-            <StyledDiv>
+            </div>
+            <div css={StyledDiv}>
                 <div>
                     <TextButton text="아이디/비밀번호 찾기"></TextButton>
                 </div>
-                <div>
-                    <BasicText text="아직 회원이 아니신가요?"></BasicText>
+                <div css={StyledText}>
+                    <BasicText size="small" text="아직 회원이 아니신가요?"></BasicText>
                     <TextButton text="회원가입"></TextButton>
                 </div>
-            </StyledDiv>
+            </div>
         </div>
     );
 };
 
-const StyledDiv = styled.div`
+const StyledDiv = css`
     margin-top: 1rem;
+`;
+
+const StyledText = css`
+    float: left;
 `;

@@ -1,4 +1,4 @@
+export * from './Atoms/';
 export * from './Button/';
-export * from './Text/';
-export * from './Divider/';
+export * from './Text/Title';
 export * from './Form/';
