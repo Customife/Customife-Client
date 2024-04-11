@@ -6,7 +6,7 @@ interface BasicTextProps {
     size: 'Xsmall' | 'small' | 'medium' | 'large';
 }
 
-const fontSizes = {
+const TextSizes = {
     Xsmall: '10px',
     small: '14px',
     medium: '16px',
@@ -15,7 +15,7 @@ const fontSizes = {
 
 export const BasicText = ({ text, size }: BasicTextProps) => {
     const TextSizeStyle = css`
-        font-size: ${fontSizes[size]};
+        font-size: ${TextSizes[size]};
     `;
 
     return <p css={TextSizeStyle}>{text}</p>;
