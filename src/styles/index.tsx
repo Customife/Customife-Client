@@ -1,2 +1,3 @@
-export * from './Text/LogoStyle';
+export * from './components';
+export * from './pages';
 export * from './GlobalStyle';

@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Logo } from '../../components';
+import { BasicTitle } from '../..';
+import { PageStyle } from '../../../styles';
 
 export const IntroPage = () => {
     const navigate = useNavigate();
@@ -12,5 +14,9 @@ export const IntroPage = () => {
         };
     });
 
-    return <Logo name="Customife"></Logo>;
+    return (
+        <div css={PageStyle}>
+            <BasicTitle size="1" title="Customife" />
+        </div>
+    );
 };
