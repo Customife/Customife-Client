@@ -1,4 +1,4 @@
-export * from './Atoms/';
+export * from './Atoms';
 export * from './Molecules';
-export * from './Button/';
-export * from './Form/';
+export * from './Organisms';
+export * from './Templates';

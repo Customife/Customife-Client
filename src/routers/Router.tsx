@@ -2,7 +2,8 @@ import App from 'App';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { IntroPage, LoginPage } from '../pages';
+import { LoginTemplate } from '../components/Templates/LoginAndSignup/LoginTemplate';
+import { IntroPage, LoginPage } from '../components/pages';
 
 export const Router = () => {
     return (

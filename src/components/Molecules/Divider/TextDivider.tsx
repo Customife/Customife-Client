@@ -11,7 +11,7 @@ export const TextDivider = ({ text }: TextDividerProps) => {
     return (
         <div css={CenterComponent}>
             <BasicDivider width="35%" />
-            <BasicText size="Xsmall" text={text}></BasicText>
+            <BasicText size="Xsmall">{text}</BasicText>
             <BasicDivider width="35%" />
         </div>
     );

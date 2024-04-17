@@ -2,8 +2,8 @@ import { css } from '@emotion/react';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { BasicTitle } from '../../components';
-import { PageStyle } from '../../styles';
+import { BasicTitle } from '../..';
+import { PageStyle } from '../../../styles';
 
 export const IntroPage = () => {
     const navigate = useNavigate();
