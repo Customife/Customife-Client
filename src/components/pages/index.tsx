@@ -1,2 +1,3 @@
 export * from './IntroPage/IntroPage';
-export * from './LoginPage/LoginPage';
+export * from './LoginSignupPage/LoginPage';
+export * from './LoginSignupPage/SignupPage';
