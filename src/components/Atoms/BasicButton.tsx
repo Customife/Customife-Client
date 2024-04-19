@@ -5,11 +5,12 @@ interface BasicButtonProps {
     type: 'text' | 'image';
     imageUrl?: string;
     text: string;
+    onClick?: () => void;
 }
 
-export const BasicButton = ({ type, imageUrl, text }: BasicButtonProps) => {
+export const BasicButton = ({ type, imageUrl, text, onClick }: BasicButtonProps) => {
     return (
-        <button css={BasicButtonStyle}>
+        <button css={BasicButtonStyle} onClick={onClick}>
             {type === 'text' && text}
             {type === 'image' && <img src={imageUrl} />}
         </button>

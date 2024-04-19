@@ -5,7 +5,7 @@ import { CenterComponent } from '../../styles';
 
 interface BasicTitleProps {
     size: '1' | '2' | '3';
-    title: string;
+    children: React.ReactNode;
 }
 
 const TitleSizes = {
@@ -14,10 +14,10 @@ const TitleSizes = {
     '3': '24px',
 };
 
-export const BasicTitle = ({ size, title }: BasicTitleProps) => {
+export const BasicTitle = ({ size, children }: BasicTitleProps) => {
     const TitleSizeStyle = css`
         font-size: ${TitleSizes[size]};
     `;
 
-    return <h1 css={[CenterComponent, TitleSizeStyle]}>{title}</h1>;
+    return <h1 css={[CenterComponent, TitleSizeStyle]}>{children}</h1>;
 };

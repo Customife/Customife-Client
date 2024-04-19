@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import React from 'react';
 
 import { CenterComponent } from '../../../styles/';
@@ -9,10 +10,14 @@ interface TextDividerProps {
 
 export const TextDivider = ({ text }: TextDividerProps) => {
     return (
-        <div css={CenterComponent}>
+        <div css={[CenterComponent, JustifyContentEvenly]}>
             <BasicDivider width="35%" />
             <BasicText size="Xsmall">{text}</BasicText>
             <BasicDivider width="35%" />
         </div>
     );
 };
+
+const JustifyContentEvenly = css`
+    justify-content: space-evenly;
+`;

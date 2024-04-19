@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { BasicInput } from '../..';
+import { BasicInput } from '../../..';
 
 export const LoginForm = () => {
     return (
