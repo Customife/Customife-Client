@@ -7,7 +7,7 @@ import { CenterComponent, PageStyle } from '../../../styles';
 export const LoginPage = () => {
     return (
         <div css={PageStyle}>
-            <BasicTitle size="2" title="Login" />
+            <BasicTitle size="2">Login</BasicTitle>
             <div css={[CenterComponent, MarginStyle]}>
                 <LoginForm />
             </div>

@@ -16,7 +16,7 @@ export const IntroPage = () => {
 
     return (
         <div css={PageStyle}>
-            <BasicTitle size="1" title="Customife" />
+            <BasicTitle size="1">Customife</BasicTitle>
         </div>
     );
 };
