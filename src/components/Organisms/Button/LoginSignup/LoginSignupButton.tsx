@@ -38,9 +38,6 @@ export const LoginSignupButton = ({ name }: LoginSignupButtonProps) => {
 
     return (
         <div>
-            <div css={DivStyle2}>
-                <BasicButton type="text" text="아이디/비밀번호 찾기"></BasicButton>
-            </div>
             <div css={DivStyle}>
                 <BasicText size="small">{Button.text}</BasicText>
                 <BasicButton type="text" text={Button.buttonText as string} onClick={handleButton}></BasicButton>
@@ -52,9 +49,4 @@ export const LoginSignupButton = ({ name }: LoginSignupButtonProps) => {
 const DivStyle = css`
     display: flex;
     align-items: center;
-`;
-
-const DivStyle2 = css`
-    display: flex;
-    justify-content: center;
 `;
