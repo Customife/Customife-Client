@@ -7,6 +7,10 @@ const Colors = {
     green: 'rgb(118, 171, 174)',
 };
 
+const ErrMessages = {
+    passwordCheckErr: '비밀번호가 다릅니다.',
+};
+
 export const SignupForm = () => {
     const [password, setPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
@@ -28,10 +32,8 @@ export const SignupForm = () => {
     useEffect(() => {
         if (password === passwordCheck) {
             setIsPasswordCheck(true);
-            setPasswordErrMessage('');
         } else {
             setIsPasswordCheck(false);
-            setPasswordErrMessage('비밀번호가 다릅니다.');
         }
     }, [passwordCheck]);
 
@@ -53,7 +55,7 @@ export const SignupForm = () => {
                 placeholder="비밀번호 확인"
                 color={Colors.gray}
             />
-            <p>{!isPasswordCheck && passwordErrMessage}</p>
+            <p>{!isPasswordCheck && ErrMessages.passwordCheckErr}</p>
             <BasicInput type="submit" value="회원가입" color={Colors.green} />
         </form>
     );
