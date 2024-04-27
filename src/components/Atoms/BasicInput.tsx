@@ -7,11 +7,12 @@ interface BasicInputProps {
     type: string;
     name?: string;
     placeholder?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string;
     color: string;
 }
 
-export const BasicInput = ({ type, name, placeholder, value, color }: BasicInputProps) => {
+export const BasicInput = ({ type, name, placeholder, value, onChange, color }: BasicInputProps) => {
     const InputColorStyle = css`
         background-color: ${color};
     `;
@@ -23,6 +24,7 @@ export const BasicInput = ({ type, name, placeholder, value, color }: BasicInput
                 type={type}
                 name={name}
                 placeholder={placeholder}
+                onChange={onChange}
                 value={value}
             />
         </div>
