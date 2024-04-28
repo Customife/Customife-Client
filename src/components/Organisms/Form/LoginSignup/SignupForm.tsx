@@ -22,6 +22,8 @@ export const SignupForm = () => {
     const [isPasswordCharacter, setIsPasswordCharacter] = useState(false);
     const [isPasswordCheck, setIsPasswordCheck] = useState(false);
 
+    const [passwordCheckErr, setPasswordCheckErr] = useState('');
+
     const handlePassword = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             const { value } = event.target;
@@ -52,17 +54,20 @@ export const SignupForm = () => {
     useEffect(() => {
         if (password === passwordCheck) {
             setIsPasswordCheck(true);
+            setPasswordCheckErr('');
         } else {
             setIsPasswordCheck(false);
+            setPasswordCheckErr(Messages.passwordCheckErr);
         }
 
-        if (password.length === 0) {
+        if (password.length === 0 || passwordCheck.length === 0) {
             setIsPasswordCheck(false);
+            setPasswordCheckErr('');
         }
     }, [passwordCheck]);
 
     return (
-        <form method="post">
+        <form method="post" style={{ width: 'min-content' }}>
             <BasicInput type="email" name="email" placeholder="이메일" color={Colors.gray} />
             <BasicInput type="text" name="nickname" placeholder="닉네임" color={Colors.gray} />
             <BasicInput
@@ -72,8 +77,8 @@ export const SignupForm = () => {
                 placeholder="비밀번호"
                 color={Colors.gray}
             />
-            <p css={isPasswordLength ? SuccessStyle : FailedStyle}>{Messages.passwordLength}</p>
-            <p css={isPasswordCharacter ? SuccessStyle : FailedStyle}>{Messages.passwordCharacter}</p>
+            <p css={textStyle(isPasswordLength)}>{Messages.passwordLength}</p>
+            <p css={textStyle(isPasswordCharacter)}>{Messages.passwordCharacter}</p>
             <BasicInput
                 type="password"
                 name="password_check"
@@ -81,16 +86,15 @@ export const SignupForm = () => {
                 placeholder="비밀번호 확인"
                 color={Colors.gray}
             />
-            <p css={isPasswordCheck ? SuccessStyle : FailedStyle}>{Messages.passwordCheckErr}</p>
+            <p css={textStyle(isPasswordCheck)}>{passwordCheckErr}</p>
             <BasicInput type="submit" value="회원가입" color={Colors.green} />
         </form>
     );
 };
 
-const SuccessStyle = css`
-    color: #13661b;
-`;
+const textStyle = (props: boolean) => css`
+    font-size: small;
+    font-weight: bold;
 
-const FailedStyle = css`
-    color: #db3d27;
+    color: ${props ? 'rgb(19, 102, 27)' : 'rgb(219, 61, 39)'};
 `;
