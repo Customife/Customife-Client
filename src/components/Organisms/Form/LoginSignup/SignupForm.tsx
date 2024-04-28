@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { BasicInput } from '../../..';
@@ -52,6 +53,10 @@ export const SignupForm = () => {
         if (password === passwordCheck) {
             setIsPasswordCheck(true);
         } else {
+            setIsPasswordCheck(false);
+        }
+
+        if (password.length === 0) {
             setIsPasswordCheck(false);
         }
     }, [passwordCheck]);
