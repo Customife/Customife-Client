@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
+import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { BasicInput } from '../../..';
+import { BasicButton, BasicInput } from '../../..';
 
 const Colors = {
     gray: 'rgb(238, 238, 238)',
@@ -15,7 +17,9 @@ const Messages = {
 };
 
 export const SignupForm = () => {
-    const [password, setPassword] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userNickName, setUserNickName] = useState('');
+    const [userPassword, setUserPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
 
     const [isPasswordLength, setIsPasswordLength] = useState(false);
@@ -29,7 +33,7 @@ export const SignupForm = () => {
             const { value } = event.target;
             const lengthRegex = /^.{8,}$/;
             const characterRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])/;
-            setPassword(value);
+            setUserPassword(value);
 
             if (!lengthRegex.test(value)) {
                 setIsPasswordLength(false);
@@ -43,7 +47,7 @@ export const SignupForm = () => {
                 setIsPasswordCharacter(true);
             }
         },
-        [password],
+        [userPassword],
     );
 
     const validatePasswordCheck = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,8 +55,16 @@ export const SignupForm = () => {
         setPasswordCheck(value);
     }, []);
 
+    const changeUserEmail = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserEmail(event.target.value);
+    }, []);
+
+    const changeUserNickName = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserNickName(event.target.value);
+    }, []);
+
     useEffect(() => {
-        if (password === passwordCheck) {
+        if (userPassword === passwordCheck) {
             setIsPasswordCheck(true);
             setPasswordCheckErr('');
         } else {
@@ -60,35 +72,69 @@ export const SignupForm = () => {
             setPasswordCheckErr(Messages.passwordCheckErr);
         }
 
-        if (password.length === 0 || passwordCheck.length === 0) {
+        if (userPassword.length === 0 || passwordCheck.length === 0) {
             setIsPasswordCheck(false);
             setPasswordCheckErr('');
         }
     }, [passwordCheck]);
 
+    const navigate = useNavigate();
+
+    const signup = async () => {
+        const request = {
+            userEmail: userEmail,
+            userPassword: userPassword,
+            userNickName: userNickName,
+        };
+
+        await axios
+            .post('http://localhost:8080/user/signup', request)
+            .then((response) => {
+                navigate('/login');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
-        <form method="post" style={{ width: 'min-content' }}>
-            <BasicInput type="email" name="email" placeholder="이메일" color={Colors.gray} />
-            <BasicInput type="text" name="nickname" placeholder="닉네임" color={Colors.gray} />
-            <BasicInput
-                type="password"
-                name="password"
-                onChange={handlePassword}
-                placeholder="비밀번호"
-                color={Colors.gray}
-            />
-            <p css={textStyle(isPasswordLength)}>{Messages.passwordLength}</p>
-            <p css={textStyle(isPasswordCharacter)}>{Messages.passwordCharacter}</p>
-            <BasicInput
-                type="password"
-                name="password_check"
-                onChange={validatePasswordCheck}
-                placeholder="비밀번호 확인"
-                color={Colors.gray}
-            />
-            <p css={textStyle(isPasswordCheck)}>{passwordCheckErr}</p>
-            <BasicInput type="submit" value="회원가입" color={Colors.green} />
-        </form>
+        <div>
+            <form method="post" style={{ width: 'min-content' }}>
+                <BasicInput
+                    type="email"
+                    name="email"
+                    placeholder="이메일"
+                    onChange={changeUserEmail}
+                    color={Colors.gray}
+                />
+                <BasicInput
+                    type="text"
+                    name="nickname"
+                    placeholder="닉네임"
+                    onChange={changeUserNickName}
+                    color={Colors.gray}
+                />
+                <BasicInput
+                    type="password"
+                    name="password"
+                    onChange={handlePassword}
+                    placeholder="비밀번호"
+                    color={Colors.gray}
+                />
+                <p css={textStyle(isPasswordLength)}>{Messages.passwordLength}</p>
+                <p css={textStyle(isPasswordCharacter)}>{Messages.passwordCharacter}</p>
+                <BasicInput
+                    type="password"
+                    name="password_check"
+                    onChange={validatePasswordCheck}
+                    placeholder="비밀번호 확인"
+                    color={Colors.gray}
+                />
+                <p css={textStyle(isPasswordCheck)}>{passwordCheckErr}</p>
+                {/* <BasicInput type="submit" value="회원가입" color={Colors.green} /> */}
+            </form>
+            <BasicButton type="text" text="회원가입" onClick={signup} />
+        </div>
     );
 };
 
