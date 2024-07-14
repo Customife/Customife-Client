@@ -1,10 +1,14 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
+import { useDateContext } from '../../../hooks/DateContextHook';
+
 export const TodoBox = () => {
+    const { selectedDate } = useDateContext();
+
     return (
-        <div>
-            <div css={divStyle}></div>
+        <div css={divStyle}>
+            <div>{selectedDate}</div>
         </div>
     );
 };

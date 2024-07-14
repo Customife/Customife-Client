@@ -1,13 +1,32 @@
 import { css } from '@emotion/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
 import React, { useState } from 'react';
-import 'react-calendar/dist/Calendar.css';
+
+import { useDateContext } from '../../../hooks/DateContextHook';
+import { MainCalendarStyle } from '../../../styles';
 
 export const MainCalendar = () => {
-    const [value, setValue] = useState(new Date());
+    const { setSelectedDate } = useDateContext();
 
-    const onChange = () => {
-        setValue(value);
+    const dateClick = (info: DateClickArg) => {
+        setSelectedDate(info.dateStr);
     };
 
-    return <div></div>;
+    return (
+        <div css={MainCalendarStyle}>
+            <FullCalendar
+                locale="kr"
+                headerToolbar={{
+                    left: 'title',
+                    center: 'prev',
+                    right: 'next',
+                }}
+                plugins={[dayGridPlugin, interactionPlugin]}
+                initialView="dayGridMonth"
+                dateClick={dateClick}
+            />
+        </div>
+    );
 };

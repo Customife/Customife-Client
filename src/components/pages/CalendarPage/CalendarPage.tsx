@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
+import { DateProvider } from '../../../hooks/DateContextHook';
 import { BasicTitle } from '../../Atoms';
 import { MainCalendar } from '../../Organisms/Calendar/MainCalendar';
 import { TodoBox, MilestoneBox } from '../../Organisms/ToolBox';
@@ -10,21 +11,20 @@ export const CalendarPage = () => {
         <div>
             <div css={StyledDiv}></div>
             <div css={divStyle}>
-                <div>
-                    <div css={marginStyle2}>
-                        <BasicTitle size="3">2024년 03월</BasicTitle>
+                <DateProvider>
+                    <div>
+                        <MainCalendar></MainCalendar>
                     </div>
-                    <MainCalendar></MainCalendar>
-                </div>
-                <div css={marginStyle}>
-                    <div css={marginStyle2}>
-                        <BasicTitle size="3">Customife</BasicTitle>
+                    <div css={marginStyle}>
+                        <div css={marginStyle2}>
+                            <BasicTitle size="3">Customife</BasicTitle>
+                        </div>
+                        <div css={marginStyle3}>
+                            <TodoBox></TodoBox>
+                        </div>
+                        <MilestoneBox></MilestoneBox>
                     </div>
-                    <div css={marginStyle2}>
-                        <TodoBox></TodoBox>
-                    </div>
-                    <MilestoneBox></MilestoneBox>
-                </div>
+                </DateProvider>
             </div>
         </div>
     );
@@ -40,8 +40,18 @@ const StyledDiv = css`
 
 const marginStyle = css`
     margin-left: 0.5vw;
+
+    display: flex;
+    flex-direction: column;
 `;
 
 const marginStyle2 = css`
+    margin-bottom: 1.5em;
+
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const marginStyle3 = css`
     margin-bottom: 1vh;
 `;
