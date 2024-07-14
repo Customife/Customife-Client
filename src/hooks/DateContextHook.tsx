@@ -5,7 +5,18 @@ interface DateContextProps {
     setSelectedDate: (date: string) => void;
 }
 
-const DateContext = createContext<DateContextProps | undefined>(undefined);
+const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+};
+
+const DateContext = createContext<DateContextProps | undefined>({
+    selectedDate: getTodayDate(),
+    setSelectedDate: () => {},
+});
 
 export const useDateContext = () => {
     const dateContext = useContext(DateContext);
@@ -20,7 +31,7 @@ interface DateProviderProps {
 }
 
 export const DateProvider = ({ children }: DateProviderProps) => {
-    const [selectedDate, setSelectedDate] = useState<string>('');
+    const [selectedDate, setSelectedDate] = useState<string>(getTodayDate());
 
     return <DateContext.Provider value={{ selectedDate, setSelectedDate }}>{children}</DateContext.Provider>;
 };

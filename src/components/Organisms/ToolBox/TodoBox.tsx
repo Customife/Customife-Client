@@ -2,13 +2,15 @@ import { css } from '@emotion/react';
 import React from 'react';
 
 import { useDateContext } from '../../../hooks/DateContextHook';
+import { BasicTitle } from '../../Atoms';
 
 export const TodoBox = () => {
     const { selectedDate } = useDateContext();
 
     return (
         <div css={divStyle}>
-            <div>{selectedDate}</div>
+            {/* <div>{selectedDate}</div> */}
+            <BasicTitle size="3">{selectedDate}</BasicTitle>
         </div>
     );
 };
