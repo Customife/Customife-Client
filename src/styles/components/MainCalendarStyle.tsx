@@ -56,4 +56,12 @@ export const MainCalendarStyle = css`
     .fc-day-sun a {
         color: red;
     }
+
+    .fc .fc-daygrid-day-top {
+        justify-content: center;
+    }
+
+    .fc .fc-daygrid-day-number {
+        padding: 0px;
+    }
 `;
