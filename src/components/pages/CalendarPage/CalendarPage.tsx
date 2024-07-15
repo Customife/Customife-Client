@@ -19,10 +19,7 @@ export const CalendarPage = () => {
                         <div css={marginStyle2}>
                             <BasicTitle size="3">Customife</BasicTitle>
                         </div>
-                        <div css={marginStyle3}>
-                            <TodoBox></TodoBox>
-                        </div>
-                        <MilestoneBox></MilestoneBox>
+                        <TodoBox></TodoBox>
                     </div>
                 </DateProvider>
             </div>
@@ -43,6 +40,9 @@ const marginStyle = css`
 
     display: flex;
     flex-direction: column;
+
+    width: 20vw;
+    height: auto;
 `;
 
 const marginStyle2 = css`
@@ -50,8 +50,4 @@ const marginStyle2 = css`
 
     display: flex;
     justify-content: flex-end;
-`;
-
-const marginStyle3 = css`
-    margin-bottom: 1vh;
 `;

@@ -7,17 +7,26 @@ import { BasicTitle } from '../../Atoms';
 export const TodoBox = () => {
     const { selectedDate } = useDateContext();
 
+    const makeDateformat = (date: String) => {
+        const splitedDate = date.split('-');
+        const year = splitedDate[0];
+        const month = splitedDate[1];
+        const day = splitedDate[2];
+        return `${year}년 ${month}월 ${day}일`;
+    };
+
     return (
         <div css={divStyle}>
-            {/* <div>{selectedDate}</div> */}
-            <BasicTitle size="3">{selectedDate}</BasicTitle>
+            <BasicTitle size="4">{makeDateformat(selectedDate)}</BasicTitle>
         </div>
     );
 };
 
 const divStyle = css`
-    width: 18vw;
-    height: 42vh;
     border: 1px solid #a0a096;
     border-radius: 10px;
+
+    display: flex;
+    align-items: flex-start;
+    padding-left: 1em;
 `;
