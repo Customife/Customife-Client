@@ -4,9 +4,14 @@ import React from 'react';
 
 import { BasicTitle } from '../../Atoms';
 
-export const EventModal = () => {
+interface EventModalProps {
+    modalRef: React.ForwardedRef<HTMLDivElement>;
+    modalOutSideClick: (e: any) => void;
+}
+
+export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => {
     return (
-        <TopModalContainer>
+        <TopModalContainer ref={modalRef} onClick={(e) => modalOutSideClick(e)}>
             <ModalBodyContainer>
                 <BasicTitle size="4">이벤트 추가</BasicTitle>
             </ModalBodyContainer>

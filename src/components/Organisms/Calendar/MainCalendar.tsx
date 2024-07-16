@@ -2,7 +2,7 @@ import { DayCellContentArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
 import { useCalendarModalContext } from '../../../hooks/CalendarModalContextHook';
@@ -12,6 +12,7 @@ import { MainCalendarStyle } from '../../../styles';
 export const MainCalendar = () => {
     const { setSelectedDate } = useDateContext();
     const { isModalOpen, setIsModalOpen } = useCalendarModalContext();
+    const modalRef = useRef<HTMLDivElement>(null);
 
     const dateClick = (info: DateClickArg) => {
         setSelectedDate(info.dateStr);
@@ -30,8 +31,18 @@ export const MainCalendar = () => {
         openModal();
     };
 
+    const modalOutSideClick = (e: any) => {
+        if (modalRef.current === e.target) {
+            closeModal();
+        }
+    };
+
     const openModal = () => {
         setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -53,7 +64,7 @@ export const MainCalendar = () => {
                     select={addEvent}
                 />
             </div>
-            {isModalOpen && <EventModal />}
+            {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}
         </div>
     );
 };
