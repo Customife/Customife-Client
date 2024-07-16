@@ -1,28 +1,31 @@
 import { css } from '@emotion/react';
-import React from 'react';
+import React, { useState } from 'react';
 
+import { CalendarModalProvider } from '../../../hooks/CalendarModalContextHook';
 import { DateProvider } from '../../../hooks/DateContextHook';
 import { BasicTitle } from '../../Atoms';
 import { MainCalendar } from '../../Organisms/Calendar/MainCalendar';
-import { TodoBox, MilestoneBox } from '../../Organisms/ToolBox';
+import { TodoBox } from '../../Organisms/ToolBox';
 
 export const CalendarPage = () => {
     return (
         <div>
-            <div css={StyledDiv}></div>
-            <div css={divStyle}>
-                <DateProvider>
-                    <div>
-                        <MainCalendar></MainCalendar>
-                    </div>
-                    <div css={marginStyle}>
-                        <div css={marginStyle2}>
-                            <BasicTitle size="3">Customife</BasicTitle>
+            <CalendarModalProvider>
+                <div css={StyledDiv}></div>
+                <div css={divStyle}>
+                    <DateProvider>
+                        <div>
+                            <MainCalendar></MainCalendar>
                         </div>
-                        <TodoBox></TodoBox>
-                    </div>
-                </DateProvider>
-            </div>
+                        <div css={marginStyle}>
+                            <div css={marginStyle2}>
+                                <BasicTitle size="3">Customife</BasicTitle>
+                            </div>
+                            <TodoBox></TodoBox>
+                        </div>
+                    </DateProvider>
+                </div>
+            </CalendarModalProvider>
         </div>
     );
 };
