@@ -1,19 +1,20 @@
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { BasicTitle } from '../../Atoms';
 
 export const EventModal = () => {
     return (
-        <div css={ModalContainerStyle1}>
-            <div css={ModalContainerStyle2}>
+        <TopModalContainer>
+            <ModalBodyContainer>
                 <BasicTitle size="4">이벤트 추가</BasicTitle>
-            </div>
-        </div>
+            </ModalBodyContainer>
+        </TopModalContainer>
     );
 };
 
-const ModalContainerStyle1 = css`
+const TopModalContainer = styled.div`
     background: rgba(0, 0, 0, 0.3);
     z-index: 1500;
     display: block;
@@ -24,7 +25,7 @@ const ModalContainerStyle1 = css`
     bottom: 0;
 `;
 
-const ModalContainerStyle2 = css`
+const ModalBodyContainer = styled.div`
     z-index: 2000;
     width: 400px;
     height: 250px;

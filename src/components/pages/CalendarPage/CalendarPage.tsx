@@ -14,9 +14,7 @@ export const CalendarPage = () => {
                 <div css={StyledDiv}></div>
                 <div css={divStyle}>
                     <DateProvider>
-                        <div>
-                            <MainCalendar></MainCalendar>
-                        </div>
+                        <MainCalendar></MainCalendar>
                         <div css={marginStyle}>
                             <div css={marginStyle2}>
                                 <BasicTitle size="3">Customife</BasicTitle>
