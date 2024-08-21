@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { BasicButton, BasicInput } from '../../..';
+import { LoginSignupButtonStyle } from '../../../../styles';
 
 export const LoginForm = () => {
     const [userEmail, setUserEmail] = useState('');
@@ -55,7 +56,7 @@ export const LoginForm = () => {
                     color="rgb(238, 238, 238)"
                 />
             </form>
-            <BasicButton type="text" text="로그인" onClick={login} />
+            <BasicButton type="text" text="로그인" onClick={login} style={LoginSignupButtonStyle} />
         </div>
     );
 };

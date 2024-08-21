@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { ScheduleOrTodoButtons } from './Event/ScheduleOrTodoButtons';
 import { BasicTitle } from '../../Atoms';
 
 interface EventModalProps {
@@ -14,6 +15,7 @@ export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => 
         <TopModalContainer ref={modalRef} onClick={(e) => modalOutSideClick(e)}>
             <ModalBodyContainer>
                 <BasicTitle size="4">이벤트 추가</BasicTitle>
+                <ScheduleOrTodoButtons />
             </ModalBodyContainer>
         </TopModalContainer>
     );

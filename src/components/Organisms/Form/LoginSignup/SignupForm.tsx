@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { BasicButton, BasicInput } from '../../..';
+import { LoginSignupButtonStyle } from '../../../../styles';
 
 const Colors = {
     gray: 'rgb(238, 238, 238)',
@@ -131,9 +132,8 @@ export const SignupForm = () => {
                     color={Colors.gray}
                 />
                 <p css={textStyle(isPasswordCheck)}>{passwordCheckErr}</p>
-                {/* <BasicInput type="submit" value="회원가입" color={Colors.green} /> */}
             </form>
-            <BasicButton type="text" text="회원가입" onClick={signup} />
+            <BasicButton type="text" text="회원가입" onClick={signup} style={LoginSignupButtonStyle} />
         </div>
     );
 };
