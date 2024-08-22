@@ -4,8 +4,8 @@ import React from 'react';
 interface BasicButtonProps {
     type: 'text' | 'image';
     imageUrl?: string;
-    text: string;
-    onClick?: () => void;
+    text?: string;
+    onClick?: (e: any) => void;
     style?: SerializedStyles;
 }
 

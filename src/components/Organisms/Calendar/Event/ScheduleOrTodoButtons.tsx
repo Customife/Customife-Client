@@ -8,7 +8,7 @@ export const ScheduleOrTodoButtons = () => {
         <div css={divStyle}>
             <BasicButton type={'text'} text={'스케쥴 추가'} style={buttonStyle}></BasicButton>
             <BasicBox size="Xsmall" />
-            <BasicButton type={'text'} text={'스케쥴 추가'} style={buttonStyle}></BasicButton>
+            <BasicButton type={'text'} text={'투두 추가'} style={buttonStyle}></BasicButton>
         </div>
     );
 };

@@ -3,7 +3,9 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { ScheduleOrTodoButtons } from './Event/ScheduleOrTodoButtons';
-import { BasicTitle } from '../../Atoms';
+import ICON_CLOSE_URL from '../../../assets/images/Icon/icon_close.png';
+import { useCalendarModalContext } from '../../../hooks/CalendarModalContextHook';
+import { BasicButton, BasicTitle } from '../../Atoms';
 import { BasicBox } from '../../Atoms/BasicBox';
 
 interface EventModalProps {
@@ -12,9 +14,16 @@ interface EventModalProps {
 }
 
 export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => {
+    const { isModalOpen, setIsModalOpen } = useCalendarModalContext();
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <TopModalContainer ref={modalRef} onClick={(e) => modalOutSideClick(e)}>
             <ModalBodyContainer>
+                <BasicButton type="image" imageUrl={ICON_CLOSE_URL} onClick={closeModal} style={ButtonStyle} />
                 <div css={divStyle}>
                     <BasicBox size="small" />
                     <BasicTitle size="4">이벤트 추가</BasicTitle>
@@ -26,6 +35,12 @@ export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => 
         </TopModalContainer>
     );
 };
+
+const ButtonStyle = css`
+    position: absolute;
+    top: 1rem;
+    left: 90%;
+`;
 
 const divStyle = css`
     display: flex;
