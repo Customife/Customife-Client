@@ -1,3 +1,4 @@
+export * from './BasicBox';
 export * from './BasicButton';
 export * from './BasicDivider';
 export * from './BasicInput';

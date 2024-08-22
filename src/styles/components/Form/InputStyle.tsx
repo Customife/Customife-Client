@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 
 export const InputStyle = css`
-    width: 20vw;
-    height: 8vh;
+    width: 60vw;
+    height: 8ex;
     margin-top: 0.3rem;
     padding-left: 0.5rem;
     border-radius: 10px;

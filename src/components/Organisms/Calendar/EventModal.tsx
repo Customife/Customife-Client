@@ -4,6 +4,7 @@ import React from 'react';
 
 import { ScheduleOrTodoButtons } from './Event/ScheduleOrTodoButtons';
 import { BasicTitle } from '../../Atoms';
+import { BasicBox } from '../../Atoms/BasicBox';
 
 interface EventModalProps {
     modalRef: React.ForwardedRef<HTMLDivElement>;
@@ -14,12 +15,24 @@ export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => 
     return (
         <TopModalContainer ref={modalRef} onClick={(e) => modalOutSideClick(e)}>
             <ModalBodyContainer>
-                <BasicTitle size="4">이벤트 추가</BasicTitle>
-                <ScheduleOrTodoButtons />
+                <div css={divStyle}>
+                    <BasicBox size="small" />
+                    <BasicTitle size="4">이벤트 추가</BasicTitle>
+                    <BasicBox size="medium" />
+                    <ScheduleOrTodoButtons />
+                    <BasicBox size="medium" />
+                </div>
             </ModalBodyContainer>
         </TopModalContainer>
     );
 };
+
+const divStyle = css`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 const TopModalContainer = styled.div`
     background: rgba(0, 0, 0, 0.3);
@@ -35,7 +48,6 @@ const TopModalContainer = styled.div`
 const ModalBodyContainer = styled.div`
     z-index: 2000;
     width: 400px;
-    height: 250px;
     position: fixed;
     top: 50%;
     left: 50%;
