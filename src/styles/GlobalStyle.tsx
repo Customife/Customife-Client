@@ -14,7 +14,7 @@ export const GlobalStyle = css`
     .container {
         display: flex;
         justify-content: center;
-        width: 600px;
+        width: 100vw;
         min-height: 100vh;
     }
 `;
