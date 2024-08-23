@@ -5,7 +5,7 @@ import FullCalendar from '@fullcalendar/react';
 import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
-import { useCalendarModalContext } from '../../../hooks/CalendarModalContextHook';
+import { useCalendarModalContext, ScheduleTodoContextProvider } from '../../../hooks';
 import { useDateContext } from '../../../hooks/DateContextHook';
 import { MainCalendarStyle } from '../../../styles';
 
@@ -64,7 +64,9 @@ export const MainCalendar = () => {
                     select={addEvent}
                 />
             </div>
-            {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}
+            <ScheduleTodoContextProvider>
+                {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}
+            </ScheduleTodoContextProvider>
         </div>
     );
 };
