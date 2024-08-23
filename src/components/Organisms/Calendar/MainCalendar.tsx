@@ -28,21 +28,13 @@ export const MainCalendar = () => {
     };
 
     const addEvent = () => {
-        openModal();
+        setIsModalOpen(true);
     };
 
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
-            closeModal();
+            setIsModalOpen(false);
         }
-    };
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
     };
 
     return (

@@ -8,20 +8,10 @@ export const ScheduleOrTodoButtons = () => {
     const { scheduleOrTodo, setScheduleOrTodo } = useScheduleTodoContext();
 
     const addSchedule = () => {
-        openSchedule();
-        console.log(scheduleOrTodo);
-    };
-
-    const addTodo = () => {
-        openTodo();
-        console.log(scheduleOrTodo);
-    };
-
-    const openSchedule = () => {
         setScheduleOrTodo('schedule');
     };
 
-    const openTodo = () => {
+    const addTodo = () => {
         setScheduleOrTodo('todo');
     };
 
