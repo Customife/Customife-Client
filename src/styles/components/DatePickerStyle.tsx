@@ -5,6 +5,10 @@ export const DatePickerStyle = css`
 
     input {
         width: 100%;
+        border-width: 0 0 1px 0;
+        &:focus-visible {
+            outline-width: 0;
+        }
     }
 
     .react-datepicker-wrapper {
