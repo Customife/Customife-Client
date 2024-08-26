@@ -1,10 +1,16 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { BasicInput, BasicText } from '../../../Atoms';
+import { BasicInput, BasicText, BasicComboBox } from '../../../Atoms';
 import { CalendarDatePicker } from '../DatePicker/CalendarDatePicker';
 
 export const ScheduleAddInput = () => {
+    const testList = [
+        { value: 'value1', content: 'content1' },
+        { value: 'value2', content: 'content2' },
+        { value: 'value3', content: 'content3' },
+    ];
+
     return (
         <div css={DivStyle2}>
             <div css={DivStyle}>
@@ -19,6 +25,12 @@ export const ScheduleAddInput = () => {
                     <CalendarDatePicker />
                     <div css={DashStyle}>-</div>
                     <CalendarDatePicker />
+                </div>
+            </div>
+            <div css={DivStyle}>
+                <BasicText size="medium">카테고리</BasicText>
+                <div>
+                    <BasicComboBox name="name" list={testList} />
                 </div>
             </div>
         </div>
