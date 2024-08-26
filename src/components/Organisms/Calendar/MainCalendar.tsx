@@ -5,13 +5,14 @@ import FullCalendar from '@fullcalendar/react';
 import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
-import { useCalendarModalContext, ScheduleTodoContextProvider } from '../../../hooks';
+import { useCalendarModalContext, ScheduleTodoContextProvider, useScheduleTodoContext } from '../../../hooks';
 import { useDateContext } from '../../../hooks/DateContextHook';
 import { MainCalendarStyle } from '../../../styles';
 
 export const MainCalendar = () => {
     const { setSelectedDate } = useDateContext();
     const { isModalOpen, setIsModalOpen } = useCalendarModalContext();
+    const { setScheduleOrTodo } = useScheduleTodoContext();
     const modalRef = useRef<HTMLDivElement>(null);
 
     const dateClick = (info: DateClickArg) => {
@@ -34,6 +35,7 @@ export const MainCalendar = () => {
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
             setIsModalOpen(false);
+            setScheduleOrTodo('');
         }
     };
 
@@ -56,9 +58,7 @@ export const MainCalendar = () => {
                     select={addEvent}
                 />
             </div>
-            <ScheduleTodoContextProvider>
-                {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}
-            </ScheduleTodoContextProvider>
+            {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}
         </div>
     );
 };

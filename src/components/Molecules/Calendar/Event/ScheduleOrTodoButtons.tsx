@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { useCalendarModalContext, useScheduleTodoContext } from '../../../../hooks';
+import { useScheduleTodoContext } from '../../../../hooks';
 import { BasicBox, BasicButton } from '../../../Atoms';
 
 export const ScheduleOrTodoButtons = () => {
-    const { scheduleOrTodo, setScheduleOrTodo } = useScheduleTodoContext();
+    const { setScheduleOrTodo } = useScheduleTodoContext();
 
     const addSchedule = () => {
         setScheduleOrTodo('schedule');

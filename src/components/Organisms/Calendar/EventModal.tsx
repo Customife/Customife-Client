@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import ICON_CLOSE_URL from '../../../assets/images/Icon/icon_close.png';
-import { ScheduleTodoContextProvider, useCalendarModalContext, useScheduleTodoContext } from '../../../hooks';
+import { useCalendarModalContext, useScheduleTodoContext } from '../../../hooks';
 import { BasicButton } from '../../Atoms';
 
 import { EventAdd, ScheduleAdd, TodoAdd } from '.';
@@ -53,7 +53,7 @@ const TopModalContainer = styled.div`
 
 const ModalBodyContainer = styled.div`
     z-index: 2000;
-    width: 400px;
+    width: 40vw;
     position: fixed;
     top: 50%;
     left: 50%;

@@ -46,17 +46,31 @@ export const LoginForm = () => {
                     name="email"
                     placeholder="이메일"
                     onChange={changeUserEmail}
-                    color="rgb(238, 238, 238)"
+                    style={ButtonStyle}
                 />
                 <BasicInput
                     type="password"
                     name="password"
                     placeholder="비밀번호"
                     onChange={changeUserPassword}
-                    color="rgb(238, 238, 238)"
+                    style={ButtonStyle}
                 />
             </form>
             <BasicButton type="text" text="로그인" onClick={login} style={LoginSignupButtonStyle} />
         </div>
     );
 };
+
+const ButtonStyle = css`
+    background-color: rgb(238, 238, 238);
+
+    width: 60vw;
+    height: 8ex;
+    margin-top: 0.3rem;
+    padding-left: 0.5rem;
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    font-weight: 700;
+`;

@@ -2,20 +2,21 @@ import { css } from '@emotion/react';
 import React, { useContext } from 'react';
 
 import { BasicBox, BasicTitle } from '../../../Atoms';
+import { ScheduleAddInput } from '../../../Molecules';
 
 export const ScheduleAdd = () => {
     return (
-        <div>
+        <div css={divStyle}>
             <BasicBox size="small" />
             <BasicTitle size="4">스케쥴 추가</BasicTitle>
             <BasicBox size="medium" />
+            <ScheduleAddInput />
         </div>
     );
 };
 
 const divStyle = css`
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 `;
