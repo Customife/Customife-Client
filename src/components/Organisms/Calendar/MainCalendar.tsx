@@ -16,7 +16,9 @@ export const MainCalendar = () => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     const dateClick = (info: DateClickArg) => {
-        setSelectedDate(info.dateStr);
+        const date = new Date(info.dateStr);
+        // setSelectedDate(info.dateStr);
+        setSelectedDate(date);
     };
 
     const dayCellContent = (info: DayCellContentArg) => {
@@ -55,7 +57,7 @@ export const MainCalendar = () => {
                     editable={true}
                     selectable={true}
                     dateClick={dateClick}
-                    select={addEvent}
+                    // select={addEvent}
                 />
             </div>
             {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}

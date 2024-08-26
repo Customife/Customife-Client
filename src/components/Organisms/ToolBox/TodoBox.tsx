@@ -17,7 +17,7 @@ export const TodoBox = () => {
 
     return (
         <div css={divStyle}>
-            <BasicTitle size="4">{makeDateformat(selectedDate)}</BasicTitle>
+            <BasicTitle size="4">{selectedDate.toDateString()}</BasicTitle>
         </div>
     );
 };
