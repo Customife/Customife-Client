@@ -15,7 +15,9 @@ export const ScheduleAddInput = () => {
             </div>
             <div css={DivStyle}>
                 <BasicText size="medium">날짜</BasicText>
-                <div css={DivStyle3}>
+                <div css={[DivStyle3, DatePickerDivStyle]}>
+                    <CalendarDatePicker />
+                    <div css={DashStyle}>-</div>
                     <CalendarDatePicker />
                 </div>
             </div>
@@ -43,4 +45,13 @@ const InputStyle = css`
     &:focus-visible {
         outline: 0;
     }
+`;
+
+const DashStyle = css`
+    margin: 0 0.5rem 0 0.5rem;
+`;
+
+const DatePickerDivStyle = css`
+    display: flex;
+    justify-content: space-between;
 `;
