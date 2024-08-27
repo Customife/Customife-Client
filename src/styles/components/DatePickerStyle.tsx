@@ -5,6 +5,7 @@ export const DatePickerStyle = css`
 
     input {
         width: 100%;
+        height: 1.5rem;
         border-width: 0 0 1px 0;
         &:focus-visible {
             outline-width: 0;

@@ -29,8 +29,8 @@ export const ScheduleAddInput = () => {
             </div>
             <div css={DivStyle}>
                 <BasicText size="medium">카테고리</BasicText>
-                <div>
-                    <BasicComboBox name="name" list={testList} />
+                <div css={DivStyle3}>
+                    <BasicComboBox name="name" hidden="카테고리 선택" list={testList} style={SelectStyle} />
                 </div>
             </div>
         </div>
@@ -53,6 +53,7 @@ const DivStyle3 = css`
 
 const InputStyle = css`
     width: 100%;
+    height: 1.5rem;
     border-width: 0 0 1px;
     &:focus-visible {
         outline: 0;
@@ -66,4 +67,9 @@ const DashStyle = css`
 const DatePickerDivStyle = css`
     display: flex;
     justify-content: space-between;
+`;
+
+const SelectStyle = css`
+    width: 100%;
+    height: 1.5rem;
 `;

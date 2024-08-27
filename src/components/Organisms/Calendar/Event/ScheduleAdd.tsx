@@ -11,6 +11,7 @@ export const ScheduleAdd = () => {
             <BasicTitle size="4">스케쥴 추가</BasicTitle>
             <BasicBox size="medium" />
             <ScheduleAddInput />
+            <BasicBox size="medium" />
         </div>
     );
 };
