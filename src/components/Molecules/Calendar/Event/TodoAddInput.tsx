@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { BasicInput, BasicText, BasicComboBox } from '../../../Atoms';
+import { BasicComboBox, BasicInput, BasicText } from '../../../Atoms';
 import { CalendarDatePicker } from '../DatePicker/CalendarDatePicker';
 
-export const ScheduleAddInput = () => {
+export const TodoAddInput = () => {
     const testList = [
         { value: 'value1', content: 'content1' },
         { value: 'value2', content: 'content2' },
@@ -23,14 +23,18 @@ export const ScheduleAddInput = () => {
                 <BasicText size="medium">날짜</BasicText>
                 <div css={[DivStyle3, DatePickerDivStyle]}>
                     <CalendarDatePicker style={DatePickerWidthStyle} />
-                    <div css={DashStyle}>-</div>
-                    <CalendarDatePicker style={DatePickerWidthStyle} />
                 </div>
             </div>
             <div css={DivStyle}>
                 <BasicText size="medium">카테고리</BasicText>
                 <div css={DivStyle3}>
-                    <BasicComboBox name="name" hidden="카테고리 선택" list={testList} style={SelectStyle} />
+                    <BasicComboBox name="category" hidden="카테고리 선택" list={testList} style={SelectStyle} />
+                </div>
+            </div>
+            <div css={DivStyle}>
+                <BasicText size="medium">마일스톤</BasicText>
+                <div css={DivStyle3}>
+                    <BasicComboBox name="milestone" hidden="마일스톤 선택" list={testList} style={SelectStyle} />
                 </div>
             </div>
         </div>
@@ -70,14 +74,14 @@ const DatePickerDivStyle = css`
 `;
 
 const DatePickerWidthStyle = css`
-    width: 45%;
+    width: 100%;
 `;
 
 const SelectStyle = css`
     width: 100%;
     height: 1.5rem;
 
-    height: 1.5rem;
+    border-radius: 5px;
 
     &: focus-visible {
         outline: 0;

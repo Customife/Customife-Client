@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
 
 export const DatePickerStyle = css`
-    width: 45%;
-
     input {
         width: 100%;
         height: 1.5rem;
