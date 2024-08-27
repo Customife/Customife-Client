@@ -72,4 +72,7 @@ const DatePickerDivStyle = css`
 const SelectStyle = css`
     width: 100%;
     height: 1.5rem;
+    &: focus-visible {
+        outline: 0;
+    }
 `;

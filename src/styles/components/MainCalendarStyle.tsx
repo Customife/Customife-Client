@@ -63,5 +63,9 @@ export const MainCalendarStyle = css`
 
     .fc .fc-daygrid-day-number {
         padding: 0px;
+
+        &: hover {
+            text-decoration: none;
+        }
     }
 `;
