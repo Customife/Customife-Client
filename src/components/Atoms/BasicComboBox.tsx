@@ -17,8 +17,12 @@ interface ListProps {
 export const BasicComboBox = ({ name, hidden, list, style }: BasicComboBoxProps) => {
     const render = () => {
         const result: JSX.Element[] = [];
-        list.map((content) => {
-            result.push(<option value={content.value}>{content.content}</option>);
+        list.map((content, index) => {
+            result.push(
+                <option key={index} value={content.value}>
+                    {content.content}
+                </option>,
+            );
         });
         return result;
     };
@@ -26,7 +30,7 @@ export const BasicComboBox = ({ name, hidden, list, style }: BasicComboBoxProps)
     return (
         <div>
             <select name={name} css={style}>
-                <option value="" selected disabled hidden>
+                <option value="" hidden>
                     {hidden}
                 </option>
                 {render()}
