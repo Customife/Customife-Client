@@ -1,22 +1,27 @@
-import { DayCellContentArg } from '@fullcalendar/core';
+import { CalendarApi, DateSelectArg, DayCellContentArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
-import { useCalendarModalContext } from '../../../hooks/CalendarModalContextHook';
-import { useDateContext } from '../../../hooks/DateContextHook';
+import {
+    useCalendarModalContext,
+    useScheduleTodoContext,
+    useDateContext,
+    useStartDateContext,
+    useEndDateContext,
+} from '../../../hooks';
 import { MainCalendarStyle } from '../../../styles';
 
 export const MainCalendar = () => {
     const { setSelectedDate } = useDateContext();
     const { isModalOpen, setIsModalOpen } = useCalendarModalContext();
-    const modalRef = useRef<HTMLDivElement>(null);
+    const { setScheduleOrTodo } = useScheduleTodoContext();
+    const { setStartDate } = useStartDateContext();
+    const { setEndDate } = useEndDateContext();
 
-    const dateClick = (info: DateClickArg) => {
-        setSelectedDate(info.dateStr);
-    };
+    const modalRef = useRef<HTMLDivElement>(null);
 
     const dayCellContent = (info: DayCellContentArg) => {
         const dateText = info.dayNumberText.replace('일', '');
@@ -27,22 +32,21 @@ export const MainCalendar = () => {
         );
     };
 
-    const addEvent = () => {
-        openModal();
+    const addEvent = (info: DateSelectArg) => {
+        setIsModalOpen(true);
+        setStartDate(info.start);
+        setEndDate(info.end);
     };
 
     const modalOutSideClick = (e: any) => {
         if (modalRef.current === e.target) {
-            closeModal();
+            setIsModalOpen(false);
+            setScheduleOrTodo('');
         }
     };
 
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
+    const dayClick = (date: Date) => {
+        setSelectedDate(date);
     };
 
     return (
@@ -60,8 +64,10 @@ export const MainCalendar = () => {
                     initialView="dayGridMonth"
                     editable={true}
                     selectable={true}
-                    dateClick={dateClick}
                     select={addEvent}
+                    navLinks={true}
+                    navLinkDayClick={dayClick}
+                    // drop={dateDrop}  // allows things to be dropped on the calendar
                 />
             </div>
             {isModalOpen && <EventModal modalRef={modalRef} modalOutSideClick={modalOutSideClick} />}

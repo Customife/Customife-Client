@@ -16,6 +16,7 @@ const TextSizes = {
 export const BasicText = ({ size, children }: BasicTextProps) => {
     const TextSizeStyle = css`
         font-size: ${TextSizes[size]};
+        text-wrap: nowrap;
     `;
 
     return <p css={TextSizeStyle}>{children}</p>;

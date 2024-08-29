@@ -106,21 +106,21 @@ export const SignupForm = () => {
                     name="email"
                     placeholder="이메일"
                     onChange={changeUserEmail}
-                    color={Colors.gray}
+                    style={ButtonStyle}
                 />
                 <BasicInput
                     type="text"
                     name="nickname"
                     placeholder="닉네임"
                     onChange={changeUserNickName}
-                    color={Colors.gray}
+                    style={ButtonStyle}
                 />
                 <BasicInput
                     type="password"
                     name="password"
                     onChange={handlePassword}
                     placeholder="비밀번호"
-                    color={Colors.gray}
+                    style={ButtonStyle}
                 />
                 <p css={textStyle(isPasswordLength)}>{Messages.passwordLength}</p>
                 <p css={textStyle(isPasswordCharacter)}>{Messages.passwordCharacter}</p>
@@ -129,7 +129,7 @@ export const SignupForm = () => {
                     name="password_check"
                     onChange={validatePasswordCheck}
                     placeholder="비밀번호 확인"
-                    color={Colors.gray}
+                    style={ButtonStyle}
                 />
                 <p css={textStyle(isPasswordCheck)}>{passwordCheckErr}</p>
             </form>
@@ -143,4 +143,18 @@ const textStyle = (props: boolean) => css`
     font-weight: bold;
 
     color: ${props ? 'rgb(19, 102, 27)' : 'rgb(219, 61, 39)'};
+`;
+
+const ButtonStyle = css`
+    background-color: rgb(238, 238, 238);
+
+    width: 60vw;
+    height: 8ex;
+    margin-top: 0.3rem;
+    padding-left: 0.5rem;
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    font-weight: 700;
 `;

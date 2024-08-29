@@ -1,16 +1,17 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 
 interface DateContextProps {
-    selectedDate: string;
-    setSelectedDate: (date: string) => void;
+    selectedDate: Date;
+    setSelectedDate: (date: Date) => void;
 }
 
 const getTodayDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    // const today = new Date();
+    // const year = today.getFullYear();
+    // const month = String(today.getMonth() + 1).padStart(2, '0');
+    // const day = String(today.getDate()).padStart(2, '0');
+    // return `${year}-${month}-${day}`;
+    return new Date();
 };
 
 const DateContext = createContext<DateContextProps | undefined>({
@@ -31,7 +32,7 @@ interface DateProviderProps {
 }
 
 export const DateProvider = ({ children }: DateProviderProps) => {
-    const [selectedDate, setSelectedDate] = useState<string>(getTodayDate());
+    const [selectedDate, setSelectedDate] = useState<Date>(getTodayDate());
 
     return <DateContext.Provider value={{ selectedDate, setSelectedDate }}>{children}</DateContext.Provider>;
 };

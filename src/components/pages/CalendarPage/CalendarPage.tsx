@@ -1,8 +1,13 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import React from 'react';
 
-import { CalendarModalProvider } from '../../../hooks/CalendarModalContextHook';
-import { DateProvider } from '../../../hooks/DateContextHook';
+import {
+    CalendarModalProvider,
+    DateProvider,
+    EndDateProvider,
+    ScheduleTodoContextProvider,
+    StartDateProvider,
+} from '../../../hooks';
 import { BasicTitle } from '../../Atoms';
 import { MainCalendar } from '../../Organisms/Calendar/MainCalendar';
 import { TodoBox } from '../../Organisms/ToolBox';
@@ -11,18 +16,24 @@ export const CalendarPage = () => {
     return (
         <div>
             <CalendarModalProvider>
-                <div css={StyledDiv}></div>
-                <div css={divStyle}>
-                    <DateProvider>
-                        <MainCalendar></MainCalendar>
-                        <div css={marginStyle}>
-                            <div css={marginStyle2}>
-                                <BasicTitle size="3">Customife</BasicTitle>
+                <ScheduleTodoContextProvider>
+                    <div css={StyledDiv}></div>
+                    <div css={divStyle}>
+                        <DateProvider>
+                            <StartDateProvider>
+                                <EndDateProvider>
+                                    <MainCalendar></MainCalendar>
+                                </EndDateProvider>
+                            </StartDateProvider>
+                            <div css={marginStyle}>
+                                <div css={marginStyle2}>
+                                    <BasicTitle size="3">Customife</BasicTitle>
+                                </div>
+                                <TodoBox></TodoBox>
                             </div>
-                            <TodoBox></TodoBox>
-                        </div>
-                    </DateProvider>
-                </div>
+                        </DateProvider>
+                    </div>
+                </ScheduleTodoContextProvider>
             </CalendarModalProvider>
         </div>
     );

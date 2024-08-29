@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import React from 'react';
 
 import { InputStyle } from '../../styles';
@@ -9,23 +9,20 @@ interface BasicInputProps {
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string;
-    color: string;
+    style?: SerializedStyles;
 }
 
-export const BasicInput = ({ type, name, placeholder, value, onChange, color }: BasicInputProps) => {
-    const InputColorStyle = css`
-        background-color: ${color};
-    `;
-
+export const BasicInput = ({ type, name, placeholder, value, onChange, style }: BasicInputProps) => {
     return (
         <div>
             <input
-                css={[InputStyle, InputColorStyle]}
+                css={style}
                 type={type}
                 name={name}
                 placeholder={placeholder}
                 onChange={onChange}
                 value={value}
+                spellCheck={false}
             />
         </div>
     );
