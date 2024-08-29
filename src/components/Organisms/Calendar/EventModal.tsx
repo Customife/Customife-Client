@@ -6,7 +6,7 @@ import ICON_CLOSE_URL from '../../../assets/images/Icon/icon_close.png';
 import { useCalendarModalContext, useScheduleTodoContext } from '../../../hooks';
 import { BasicButton } from '../../Atoms';
 
-import { EventAdd, ScheduleAdd, TodoAdd } from '.';
+import { EventAdd } from '.';
 
 interface EventModalProps {
     modalRef: React.ForwardedRef<HTMLDivElement>;
@@ -26,9 +26,7 @@ export const EventModal = ({ modalRef, modalOutSideClick }: EventModalProps) => 
         <TopModalContainer ref={modalRef} onClick={(e) => modalOutSideClick(e)}>
             <ModalBodyContainer>
                 <BasicButton type="image" imageUrl={ICON_CLOSE_URL} onClick={closeModal} style={ButtonStyle} />
-                {scheduleOrTodo === '' && <EventAdd />}
-                {scheduleOrTodo === 'schedule' && <ScheduleAdd />}
-                {scheduleOrTodo === 'todo' && <TodoAdd />}
+                <EventAdd />
             </ModalBodyContainer>
         </TopModalContainer>
     );
