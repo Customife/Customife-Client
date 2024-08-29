@@ -1,15 +1,23 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { BasicComboBox, BasicInput, BasicText } from '../../../Atoms';
+import { useStartDateContext } from '../../../../hooks';
+import { LoginSignupButtonStyle } from '../../../../styles';
+import { BasicComboBox, BasicInput, BasicText, BasicButton } from '../../../Atoms';
 import { CalendarDatePicker } from '../DatePicker/CalendarDatePicker';
 
 export const TodoAddInput = () => {
+    const { startDate, setStartDate } = useStartDateContext();
+
     const testList = [
         { value: 'value1', content: 'content1' },
         { value: 'value2', content: 'content2' },
         { value: 'value3', content: 'content3' },
     ];
+
+    const onClick = () => {
+        console.log('Click Add Todo');
+    };
 
     return (
         <div css={DivStyle2}>
@@ -22,7 +30,11 @@ export const TodoAddInput = () => {
             <div css={DivStyle}>
                 <BasicText size="medium">날짜</BasicText>
                 <div css={[DivStyle3, DatePickerDivStyle]}>
-                    <CalendarDatePicker style={DatePickerWidthStyle} />
+                    <CalendarDatePicker
+                        selectedDate={startDate}
+                        setSelectedDate={setStartDate}
+                        style={DatePickerWidthStyle}
+                    />
                 </div>
             </div>
             <div css={DivStyle}>
@@ -36,6 +48,9 @@ export const TodoAddInput = () => {
                 <div css={DivStyle3}>
                     <BasicComboBox name="milestone" hidden="마일스톤 선택" list={testList} style={SelectStyle} />
                 </div>
+            </div>
+            <div>
+                <BasicButton type="text" text="추가하기" onClick={onClick} style={LoginSignupButtonStyle}></BasicButton>
             </div>
         </div>
     );

@@ -1,7 +1,13 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { CalendarModalProvider, DateProvider, ScheduleTodoContextProvider } from '../../../hooks';
+import {
+    CalendarModalProvider,
+    DateProvider,
+    EndDateProvider,
+    ScheduleTodoContextProvider,
+    StartDateProvider,
+} from '../../../hooks';
 import { BasicTitle } from '../../Atoms';
 import { MainCalendar } from '../../Organisms/Calendar/MainCalendar';
 import { TodoBox } from '../../Organisms/ToolBox';
@@ -14,7 +20,11 @@ export const CalendarPage = () => {
                     <div css={StyledDiv}></div>
                     <div css={divStyle}>
                         <DateProvider>
-                            <MainCalendar></MainCalendar>
+                            <StartDateProvider>
+                                <EndDateProvider>
+                                    <MainCalendar></MainCalendar>
+                                </EndDateProvider>
+                            </StartDateProvider>
                             <div css={marginStyle}>
                                 <div css={marginStyle2}>
                                     <BasicTitle size="3">Customife</BasicTitle>

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const LoginSignupButtonStyle = css`
-    width: 60vw;
+    width: 100%;
     height: 8ex;
 
     margin-top: 0.5rem;

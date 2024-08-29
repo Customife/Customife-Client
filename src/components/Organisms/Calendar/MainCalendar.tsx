@@ -5,13 +5,22 @@ import FullCalendar from '@fullcalendar/react';
 import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
-import { useCalendarModalContext, useScheduleTodoContext, useDateContext } from '../../../hooks';
+import {
+    useCalendarModalContext,
+    useScheduleTodoContext,
+    useDateContext,
+    useStartDateContext,
+    useEndDateContext,
+} from '../../../hooks';
 import { MainCalendarStyle } from '../../../styles';
 
 export const MainCalendar = () => {
     const { setSelectedDate } = useDateContext();
     const { isModalOpen, setIsModalOpen } = useCalendarModalContext();
     const { setScheduleOrTodo } = useScheduleTodoContext();
+    const { setStartDate } = useStartDateContext();
+    const { setEndDate } = useEndDateContext();
+
     const modalRef = useRef<HTMLDivElement>(null);
 
     const dayCellContent = (info: DayCellContentArg) => {
@@ -25,9 +34,8 @@ export const MainCalendar = () => {
 
     const addEvent = (info: DateSelectArg) => {
         setIsModalOpen(true);
-        // TODO: 시작 날짜, 마감 날짜 관리하는 Hook 생성
-        // console.log(info.start);
-        // console.log(info.end);
+        setStartDate(info.start);
+        setEndDate(info.end);
     };
 
     const modalOutSideClick = (e: any) => {

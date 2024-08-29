@@ -1,15 +1,27 @@
 import { css } from '@emotion/react';
 import React from 'react';
 
-import { BasicInput, BasicText, BasicComboBox } from '../../../Atoms';
+import { useEndDateContext, useStartDateContext } from '../../../../hooks';
+import { LoginSignupButtonStyle } from '../../../../styles';
+import { BasicInput, BasicText, BasicComboBox, BasicButton } from '../../../Atoms';
 import { CalendarDatePicker } from '../DatePicker/CalendarDatePicker';
 
 export const ScheduleAddInput = () => {
+    const { startDate, setStartDate } = useStartDateContext();
+    const { endDate, setEndDate } = useEndDateContext();
+
     const testList = [
         { value: 'value1', content: 'content1' },
         { value: 'value2', content: 'content2' },
         { value: 'value3', content: 'content3' },
     ];
+
+    const onClick = () => {
+        if (startDate <= endDate) {
+            console.log('정상');
+        }
+        console.log('Click Add Schedule');
+    };
 
     return (
         <div css={DivStyle2}>
@@ -22,9 +34,17 @@ export const ScheduleAddInput = () => {
             <div css={DivStyle}>
                 <BasicText size="medium">날짜</BasicText>
                 <div css={[DivStyle3, DatePickerDivStyle]}>
-                    <CalendarDatePicker style={DatePickerWidthStyle} />
+                    <CalendarDatePicker
+                        selectedDate={startDate}
+                        setSelectedDate={setStartDate}
+                        style={DatePickerWidthStyle}
+                    />
                     <div css={DashStyle}>-</div>
-                    <CalendarDatePicker style={DatePickerWidthStyle} />
+                    <CalendarDatePicker
+                        selectedDate={endDate}
+                        setSelectedDate={setEndDate}
+                        style={DatePickerWidthStyle}
+                    />
                 </div>
             </div>
             <div css={DivStyle}>
@@ -32,6 +52,9 @@ export const ScheduleAddInput = () => {
                 <div css={DivStyle3}>
                     <BasicComboBox name="name" hidden="카테고리 선택" list={testList} style={SelectStyle} />
                 </div>
+            </div>
+            <div>
+                <BasicButton type="text" text="추가하기" onClick={onClick} style={LoginSignupButtonStyle}></BasicButton>
             </div>
         </div>
     );
@@ -82,4 +105,8 @@ const SelectStyle = css`
     &: focus-visible {
         outline: 0;
     }
+`;
+
+const WidthStyle = css`
+    width: 100%;
 `;
