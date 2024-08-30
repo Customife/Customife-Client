@@ -7,13 +7,14 @@ interface BasicButtonProps {
     text?: string;
     onClick?: (e: any) => void;
     style?: SerializedStyles;
+    buttonStyle?: SerializedStyles;
 }
 
-export const BasicButton = ({ type, imageUrl, text, onClick, style }: BasicButtonProps) => {
+export const BasicButton = ({ type, imageUrl, text, onClick, style, buttonStyle }: BasicButtonProps) => {
     return (
         <button css={[BasicButtonStyle, style]} onClick={onClick}>
             {type === 'text' && text}
-            {type === 'image' && <img src={imageUrl} />}
+            {type === 'image' && <img src={imageUrl} css={buttonStyle} />}
         </button>
     );
 };

@@ -1,10 +1,16 @@
-import { CalendarApi, DateSelectArg, DayCellContentArg } from '@fullcalendar/core';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { DateSelectArg, DayCellContentArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
+import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import React, { useRef } from 'react';
 
 import { EventModal } from './EventModal';
+import MENU_URL from '../../../assets/images/Icon/menu.png';
+import PLUS_URL from '../../../assets/images/Icon/plus.png';
+import SEARCH_URL from '../../../assets/images/Icon/search.png';
+import STACK_URL from '../../../assets/images/Icon/stack.png';
 import {
     useCalendarModalContext,
     useScheduleTodoContext,
@@ -13,6 +19,7 @@ import {
     useEndDateContext,
 } from '../../../hooks';
 import { MainCalendarStyle } from '../../../styles';
+import { BasicButton } from '../../Atoms';
 
 export const MainCalendar = () => {
     const { setSelectedDate } = useDateContext();
@@ -52,6 +59,12 @@ export const MainCalendar = () => {
     return (
         <div>
             <div css={MainCalendarStyle}>
+                <StyledButtonDiv>
+                    <BasicButton type="image" imageUrl={PLUS_URL} buttonStyle={IconStyle} />
+                    <BasicButton type="image" imageUrl={SEARCH_URL} buttonStyle={IconStyle} />
+                    <BasicButton type="image" imageUrl={STACK_URL} buttonStyle={IconStyle} />
+                    <BasicButton type="image" imageUrl={MENU_URL} buttonStyle={IconStyle} />
+                </StyledButtonDiv>
                 <FullCalendar
                     locale="ko"
                     headerToolbar={{
@@ -74,3 +87,15 @@ export const MainCalendar = () => {
         </div>
     );
 };
+
+const StyledButtonDiv = styled.div`
+    display: flex;
+    position: absolute;
+
+    top: 1rem;
+    right: 1%;
+`;
+
+const IconStyle = css`
+    width: 17px;
+`;

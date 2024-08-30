@@ -58,7 +58,7 @@ const marginStyle = css`
 `;
 
 const marginStyle2 = css`
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 
     display: flex;
     justify-content: flex-end;

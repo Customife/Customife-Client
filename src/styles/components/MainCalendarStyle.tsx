@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 export const MainCalendarStyle = css`
+    position: relative;
     width: 60vw;
 
     .fc-toolbar {
@@ -21,6 +22,10 @@ export const MainCalendarStyle = css`
         background-color: transparent;
         border: none;
         color: black;
+    }
+
+    .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 0.5rem;
     }
 
     .fc .fc-button-primary:not(:disabled):active {
