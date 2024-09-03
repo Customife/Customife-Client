@@ -29,6 +29,7 @@ export const LoginForm = () => {
         await axios
             .post('http://localhost:8080/user/login', request)
             .then((response) => {
+                console.log(response.data.token);
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('userEmail', response.data.userEmail);
                 navigate('/main');

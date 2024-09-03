@@ -2,10 +2,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 interface BasicBoxProps {
-    size: 'Xsmall' | 'small' | 'medium' | 'large';
+    size: 'XXsmall' | 'Xsmall' | 'small' | 'medium' | 'large';
 }
 
 const BoxSize = {
+    XXsmall: '0.3rem',
     Xsmall: '0.5rem',
     small: '1rem',
     medium: '1.5rem',
