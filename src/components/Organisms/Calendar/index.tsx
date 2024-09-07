@@ -1,3 +1,4 @@
+export * from './Category/CategoryTitleBar';
 export * from './Event/EventAdd';
 export * from './Event/ScheduleAdd';
 export * from './Event/TodoAdd';

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { BasicButton } from '../../../Atoms';
 
@@ -16,8 +17,14 @@ export const CategoryBox = ({ name, colorCode }: CategoryBoxProps) => {
         background-color: ${colorCode};
     `;
 
+    const navigate = useNavigate();
+
+    const onClick = () => {
+        navigate(`/category/${name}`);
+    };
+
     return (
-        <div>
+        <div onClick={onClick}>
             <BasicButton type="text" text={name} style={CategoryBoxStyle} />
         </div>
     );
