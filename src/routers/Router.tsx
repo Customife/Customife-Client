@@ -22,12 +22,10 @@ export const Router = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/main" element={<CalendarPage />} />
-                {/* <Route path="/category" element={<CategoryPage />} />
-                <Route path="/category/:categoryName" element={<CategoryManagePage />} />
-                <Route path="/category/add" element={<CategoryAddPage />} /> */}
                 <Route path="/category" element={<CategoryPage />}>
                     <Route path="" element={<CategoryList />} />
                     <Route path="add" element={<CategoryAddPage />} />
+                    <Route path=":name" element={<CategoryManagePage />} />
                 </Route>
                 <Route path="/milestone" element={<MilestonePage />} />
             </Routes>

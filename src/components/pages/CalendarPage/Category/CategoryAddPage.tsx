@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { ChromePicker, ColorResult } from 'react-color';
+import { useNavigate } from 'react-router-dom';
 
 import { CategoryMilestonePageStyle } from '../../../../styles';
 import { BasicBox, BasicButton, BasicInput, BasicText } from '../../../Atoms';
@@ -14,6 +15,8 @@ export const CategoryAddPage = () => {
     const [categoryColor, setCategortColor] = useState('#76abae');
 
     const [isOpenColorPicker, setOpenColorPicker] = useState(false);
+
+    const navigate = useNavigate();
 
     const changeCategoryName = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setCategortName(event.target.value);
@@ -52,6 +55,7 @@ export const CategoryAddPage = () => {
             .then((response) => {
                 console.log(request);
                 console.log(response);
+                navigate('/category');
             })
             .catch((err) => {
                 console.log(request);
