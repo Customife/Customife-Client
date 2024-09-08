@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { ChromePicker, ColorResult } from 'react-color';
 
@@ -30,8 +31,32 @@ export const CategoryAddPage = () => {
         setOpenColorPicker(false);
     };
 
-    const addCategory = () => {
-        console.log('추가!');
+    axios.interceptors.request.use(
+        (config) => {
+            config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            return config;
+        },
+        (error) => {
+            return Promise.reject(error);
+        },
+    );
+
+    const addCategory = async () => {
+        const request = {
+            name: categoryName,
+            colorCode: categoryColor,
+        };
+
+        await axios
+            .post('http://localhost:8080/category/add', request)
+            .then((response) => {
+                console.log(request);
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(request);
+                console.log(err);
+            });
     };
 
     const ColorCircle = styled.div`

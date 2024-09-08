@@ -14,16 +14,6 @@ interface Category {
 }
 
 export const CategoryPage = () => {
-    // axios.interceptors.request.use(
-    //     (config) => {
-    //         config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-    //         return config;
-    //     },
-    //     (error) => {
-    //         return Promise.reject(error);
-    //     },
-    // );
-
     return (
         <div css={DivBoxStyle}>
             {/* <div css={CategoryMilestonePageStyle}>{renderCategories()}</div> */}

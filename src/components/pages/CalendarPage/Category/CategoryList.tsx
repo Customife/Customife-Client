@@ -14,6 +14,16 @@ interface Category {
 export const CategoryList = () => {
     const [categories, setCategories] = useState<Category[]>([]);
 
+    axios.interceptors.request.use(
+        (config) => {
+            config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            return config;
+        },
+        (error) => {
+            return Promise.reject(error);
+        },
+    );
+
     const renderCategories = () => {
         const result: JSX.Element[] = [];
         const data = categories;
