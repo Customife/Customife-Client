@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { ChromePicker, ColorResult } from 'react-color';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { CategoryMilestonePageStyle } from '../../../../styles';
 import { BasicBox, BasicButton, BasicInput, BasicText } from '../../../Atoms';
@@ -14,6 +14,8 @@ export const CategoryManagePage = () => {
     const { name } = useParams();
     const [categoryName, setCategortName] = useState('');
     const [categoryColor, setCategortColor] = useState('');
+
+    const navigate = useNavigate();
 
     const ColorCircle = styled.div`
         width: 1rem;
@@ -54,8 +56,23 @@ export const CategoryManagePage = () => {
         },
     );
 
-    const changeCategoryDetail = () => {
-        console.log('클릭');
+    const changeCategoryDetail = async () => {
+        const request = {
+            name: categoryName,
+            colorCode: categoryColor,
+        };
+
+        await axios
+            .patch(`http://localhost:8080/category/${name}/update`, request)
+            .then((response) => {
+                console.log(request);
+                console.log(response);
+                navigate('/category');
+            })
+            .catch((err) => {
+                console.log(request);
+                console.log(err);
+            });
     };
 
     useEffect(() => {
