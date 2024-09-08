@@ -8,7 +8,7 @@ import { CategoryTitleBar } from '../../../Organisms';
 export const CategoryManagePage = () => {
     return (
         <div css={DivBoxStyle}>
-            <CategoryTitleBar />
+            <CategoryTitleBar type="manage" />
             <BasicBox size={'small'} />
             <div css={CategoryMilestonePageStyle}>PackageManagePage</div>
         </div>

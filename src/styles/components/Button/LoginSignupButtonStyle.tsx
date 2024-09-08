@@ -7,7 +7,7 @@ export const LoginSignupButtonStyle = css`
     margin-top: 0.5rem;
 
     font-weight: bold;
-    font-size: 1rm;
+    font-size: 1em;
 
     background-color: #76abae;
     border-style: solid;

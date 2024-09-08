@@ -6,11 +6,19 @@ import BACK_ICON from '../../../../assets/images/Icon/BACK.png';
 import PLUS_ICON from '../../../../assets/images/Icon/plus.png';
 import { BasicButton, BasicTitle } from '../../../Atoms';
 
-export const CategoryTitleBar = () => {
+interface CategoryTitleBarProps {
+    type: 'add' | 'manage';
+}
+
+export const CategoryTitleBar = ({ type }: CategoryTitleBarProps) => {
     const navigate = useNavigate();
 
     const clickBack = () => {
-        navigate(-1);
+        if (type === 'add') {
+            navigate('/category');
+        } else {
+            navigate('/main');
+        }
     };
 
     const clickPlus = () => {
@@ -20,7 +28,8 @@ export const CategoryTitleBar = () => {
     return (
         <div css={TitleBarStyle}>
             <BasicButton type="image" imageUrl={BACK_ICON} onClick={clickBack}></BasicButton>
-            <BasicTitle size="3">카테고리 관리</BasicTitle>
+            {type === 'manage' && <BasicTitle size="3">카테고리 관리</BasicTitle>}
+            {type === 'add' && <BasicTitle size="3">카테고리 추가</BasicTitle>}
             <BasicButton type="image" imageUrl={PLUS_ICON} onClick={clickPlus}></BasicButton>
         </div>
     );
